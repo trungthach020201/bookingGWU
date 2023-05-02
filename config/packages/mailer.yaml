@@ -1,0 +1,3 @@
+framework:
+    mailer:
+        dsn: 'smtp://gwctbookingroom@gmail.com:caxqdzkzujjqlaio@smtp.gmail.com:587?encryption=tls&auth_mode=login&from=example@gmail.com'

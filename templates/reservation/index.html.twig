@@ -1,0 +1,340 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Hello ReservationController!
+{% endblock %}
+
+{% block body %}
+  <div class="head_logo">
+    <img src="../Assets/img/2022-Greenwich-Eng.png" alt="Logo" />
+  </div>
+  <nav class="navbar navbar-expand-lg" style="background-color: #003399;">
+    <div class="navbar-nav">
+      <div class="button_nav">
+        <a class="nav-link active" style="color: #ffffff;" href="#moving_title">Notification</a>
+      </div>
+      <div class="button_nav">
+        <a class="nav-link active" style="color: #ffffff;" href="#">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <body>
+    <div class="title">
+      <h3>BOOKING ROOM</h3>
+    </div>
+    <div class="selection">
+      <select class="form-select" aria-label="Default select">
+        <option selected hidden>Day</option>
+        <option value="Monday">
+          Monday, <span>19</span>
+        </option>
+        <option value="Tuesday">
+          Tuesday, <span>20</span>
+        </option>
+        <option value="Wednesday">
+          Wednesday, <span>21</span>
+        </option>
+        <option value="Thursday">
+          Thursday, <span>22</span>
+        </option>
+        <option value="Friday">
+          Friday, <span>23</span>
+        </option>
+        <option value="Saturday">
+          Saturday, <span>24</span>
+        </option>
+      </select>
+    </div>
+    <div class="tables" id="tables">
+      <table class="table table-bordered" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">WEEK</th>
+            <th scope="col">Slot 1</th>
+            <th scope="col">Slot 2</th>
+            <th scope="col">Slot 3</th>
+            <th scope="col">Slot 4</th>
+            <th scope="col">Slot 5</th>
+            <th scope="col">Slot 6</th>
+            <th scope="col">Slot 7</th>
+            <th scope="col">Slot 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">G401</th>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">G402</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">G403</th>
+            <td></td>
+            <td>
+              <span>GCC1002</span>
+            </td>
+            <td></td>
+            <td>
+              <span>GDC210056</span>
+              <span>Nguyen Van B</span>
+              <span>Processing</span>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">G404</th>
+            <td></td>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">G405</th>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <span>GDC210008</span>
+              <span>Nguyen Van A</span>
+              <span>Processing</span>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th scope="row">G406</th>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <span>GDC220052</span>
+              <span>Nguyen Van C</span>
+              <span>Using</span>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">G407</th>
+            <td></td>
+            <td>
+              <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Book</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <span>GDC220052</span>
+              <span>Nguyen Van C</span>
+              <span>Using</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Popup Booking -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">BOOKING INFORMATION</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-2">
+                <label for="recipient-name" class="col-form-label">Student Name:</label>
+                <input type="text" class="form-control" id="recipient-name" readonly />
+              </div>
+              <div class="mb-2">
+                <label for="recipient-name" class="col-form-label">Student Id:</label>
+                <input type="text" class="form-control" id="recipient-name" readonly />
+              </div>
+              <div class="display_inline">
+                <div class="mb-2 col-md-6">
+                  <label for="recipient-name" class="col-form-label">Room:</label>
+                  <input type="text" class="form-control" id="recipient-name" readonly />
+                </div>
+                <div class="mb-2 col-md-6">
+                  <label for="recipient-name" class="col-form-label">Slot:</label>
+                  <input type="text" class="form-control" id="recipient-name" readonly />
+                </div>
+              </div>
+              <div class="mb-2">
+                <label for="message-text" class="col-form-label">Reason:</label>
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+            <h6 class="note">Note(*): Please check your email regularly to stay up-to-date with your booking request.</h6>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="button">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup Booking -->
+    <!-- Area for Admin -->
+    <div class="border-2"></div>
+    <div class="title" id="moving_title">
+      <h3>LIST OF REQUEST</h3>
+    </div>
+    <!-- Cards request -->
+    <div class="card" style="border: 2px solid #003399;">
+      <h5 class="card-header" style="font-weight: 600; background-color: #003399; color: #ffffff;">Time send request</h5>
+      <div class="card-body row">
+        <div class="card_content col-md-10">
+          <h6 class="card-title"><span>Student Name:</span> Dang Minh Dat</h6>
+          <h6 class="card-title"><span>Student Id:</span> GCC210147</h6>
+          <h6 class="card-title"><span>Room:</span> G412</h6>
+          <h6 class="card-text"><span>Reason:</span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit eos aperiam rerum hic. Vero, tempore. Vel, omnis voluptatem perspiciatis cumque numquam libero facilis modi iusto aperiam dignissimos? Expedita, vitae aut?</h6>
+        </div>
+        <div class="card_button col-md-2">
+          <button class="button accept" style=" border: none;">Accept</button>
+          <button class="button recject" style="background-color: #D2001A; border: #D2001A;">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border: 2px solid #003399;">
+      <h5 class="card-header" style="font-weight: 600; background-color: #003399; color: #ffffff;">Time send request</h5>
+      <div class="card-body row">
+        <div class="card_content col-md-10">
+          <h6 class="card-title"><span>Student Name:</span> Dang Minh Dat</h6>
+          <h6 class="card-title"><span>Student Id:</span> GCC210147</h6>
+          <h6 class="card-title"><span>Room:</span> G412</h6>
+          <h6 class="card-text"><span>Reason:</span> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit eos aperiam rerum hic. Vero, tempore. Vel, omnis voluptatem perspiciatis cumque numquam libero facilis modi iusto aperiam dignissimos? Expedita, vitae aut?</h6>
+        </div>
+        <div class="card_button col-md-2">
+          <button class="button accept" style=" border: none;">Accept</button>
+          <button class="button recject" style="background-color: #D2001A; border: #D2001A;">Reject</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards request -->
+    <!-- Area for Admin -->
+    <script src="../Assets/js/mainpage.js"></script>
+  </body>
+  <footer class="text-center text-white">
+    <div class="text-center p-3">&copy; Powered by Greenwich Việt Nam</div>
+  </footer>
+
+  <script>
+  // get the table element
+var $table = document.getElementById("myTable"),
+    // number of rows per page
+    $n = 6,
+    // number of rows of the table
+    $rowCount = $table.rows.length,
+    // get the first cell's tag name (in the first row)
+    $firstRow = $table.rows[0].firstElementChild.tagName,
+    // boolean var to check if table has a head row
+    $hasHead = ($firstRow === "TH"),
+    // an array to hold each row
+    $tr = [],
+    // loop counters, to start count from rows[1] (2nd row) if the first row has a head tag
+    $i, $ii, $j = ($hasHead) ? 1 : 0,
+    // holds the first row if it has a (<TH>) & nothing if (<TD>)
+    $th = ($hasHead ? $table.rows[(0)].outerHTML : "");
+// count the number of pages
+var $pageCount = Math.ceil($rowCount / $n);
+// if we had one page only, then we have nothing to do ..
+if ($pageCount > 1) {
+    // assign each row outHTML (tag name & innerHTML) to the array
+    for ($i = $j, $ii = 0; $i < $rowCount; $i++, $ii++)
+        $tr[$ii] = $table.rows[$i].outerHTML;
+    // create a div block to hold the buttons
+    document.getElementById("tables").insertAdjacentHTML("afterend", "<div id='buttons'></div");
+    // the first sort, default page is the first one
+    sort(1);
+}
+
+// ($p) is the selected page number. it will be generated when a user clicks a button
+function sort($p) {
+    /* create ($rows) a variable to hold the group of rows
+     ** to be displayed on the selected page,
+     ** ($s) the start point .. the first row in each page, Do The Math
+     */
+    var $rows = $th,
+        $s = (($n * $p) - $n);
+    for ($i = $s; $i < ($s + $n) && $i < $tr.length; $i++)
+        $rows += $tr[$i];
+
+    // now the table has a processed group of rows ..
+    $table.innerHTML = $rows;
+    // create the pagination buttons
+    document.getElementById("buttons").innerHTML = pageButtons($pageCount, $p);
+    // CSS Stuff
+    document.getElementById("id" + $p).setAttribute("class", "active");
+}
+
+
+// ($pCount) : number of pages,($cur) : current page, the selected one ..
+function pageButtons($pCount, $cur) {
+    /* this variables will disable the "Prev" button on 1st page
+       and "next" button on the last one */
+    var $prevDis = ($cur == 1) ? "disabled" : "",
+        $nextDis = ($cur == $pCount) ? "disabled" : "",
+        /* this ($buttons) will hold every single button needed
+         ** it will creates each button and sets the onclick attribute
+         ** to the "sort" function with a special ($p) number..
+         */
+        $buttons = "<input type='button' value='<< Prev' onclick='sort(" + ($cur - 1) + ")' " + $prevDis + ">";
+    for ($i = 1; $i <= $pCount; $i++)
+        $buttons += "<input type='button' id='id" + $i + "'value='" + $i + "' onclick='sort(" + $i + ")'>";
+    $buttons += "<input type='button' value='Next >>' onclick='sort(" + ($cur + 1) + ")' " + $nextDis + ">";
+    return $buttons;
+}
+  </script>
+{% endblock %}

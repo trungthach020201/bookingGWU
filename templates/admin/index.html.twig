@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {{ encore_entry_link_tags('app') }}
+  <link rel="stylesheet" href="{{ asset('css/mainpage_style.css') }}" />
+{% endblock %}
+
+{% block header %}
+  <div class="head_logo">
+    <img src="{{ asset('img/2022-Greenwich-Eng.png') }}" alt="Logo" />
+  </div>
+  <nav class="navbar navbar-expand-lg" style="background-color: #003399;">
+    <div class="navbar-nav">
+      <button class="button_nav" id="updatedata">
+        <a class="nav-link active" style="color: #ffffff;">Update data</a>
+      </button>
+      <div class="button_nav">
+        <a class="nav-link active" style="color: #ffffff;" href="{{ path('app_logout') }}">Logout</a>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block body %}
+  <body>
+    <div class="title">
+      <h3>BOOKING ROOM</h3>
+    </div>
+    {% for message in app.flashes('success') %}
+      <div class="alert alert-success mt-2" id="success" align="center">{{ message }}</div>
+      {# <meta http-equiv="refresh" content="5; url='/'" /> #}
+    {% endfor %}
+    <div class="selection">
+      <select class="form-select" aria-label="Default select" onchange="location = this.value;">
+        <option selected hidden>Day</option>
+        {% for day, name in dayinweek %}
+          <option value="?day={{ day }}">
+            {{ name }}, <span>{{ day }}</span>
+          </option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="tables" id="tables">
+      <table class="table table-bordered" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">WEEK</th>
+            <th scope="col">Slot 1</th>
+            <th scope="col">Slot 2</th>
+            <th scope="col">Slot 3</th>
+            <th scope="col">Slot 4</th>
+            <th scope="col">Slot 5</th>
+            <th scope="col">Slot 6</th>
+            <th scope="col">Slot 7</th>
+            <th scope="col">Slot 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for room in rooms %}
+            <tr id="{{ room.name }}">
+              <th scope="row">{{ room.name }}</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- Area for Admin -->
+    <div class="border-2"></div>
+    <div id="request-zone">
+      <div class="title" id="moving_title">
+        <h3>LIST OF REQUEST</h3>
+      </div>
+      <!-- Cards request -->
+    </div>
+
+    <!-- Cards request -->
+    <!-- Popup Reject -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">REASON FOR REFUSAL</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <input type="hidden" class="form-control" name="rowId" id="rowId" value="" readonly />
+                <div class="mb-2">
+                  <label for="message-text" class="col-form-label">Reason:</label><textarea class="form-control" name="txtReason" id="txtReason" required></textarea>
+                </div>
+              </form>
+            </div>
+          <div class="modal-footer">
+            <input type="hidden" name="same" id="same" value="" readonly />
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="button enter" onclick="checkSubmit()" id="button" data-bs-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Popup Reject -->
+    <!-- Area for Admin -->
+  </body>
+  <script>
+    var day = '{{curDay}}';
+  </script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+  <script src="{{ asset('js/reservation.js') }}"></script>
+  <script src="{{ asset('js/scraper.js') }}"></script>
+{% endblock %}

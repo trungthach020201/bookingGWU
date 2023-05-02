@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+  {{ encore_entry_link_tags('app') }}
+  <link rel="stylesheet" href="{{ asset('css/mainpage_style.css') }}" />
+{% endblock %}
+
+{% block body %}
+  <body>
+    {% if app.user %}
+      <div style="font-style: italic;">
+        <h3 id="user">Wellcome to {{ app.user.fullname }}</h3>
+      </div>
+    {% else %}
+      <h3 id="user"></h3>
+    {% endif %}
+    <div class="title">
+      <h3>BOOKING ROOM</h3>
+    </div>
+    {% for message in app.flashes('success') %}
+      <div class="alert alert-success mt-2" id="success" align="center">{{ message }}</div>
+      {# <meta http-equiv="refresh" content="5; url='/'" /> #}
+    {% endfor %}
+    <div class="selection">
+      <select class="form-select" id="change_day" aria-label="Default select" onchange="sortByDay()">
+        <option selected hidden>
+          <p id="day_selected">{{ days|date('l, Y-m-d') }}</p>
+        </option>
+        {% for day, name in dayinweek %}
+          {% if (day|date('Y-m-d')) >= (currentDay|date('Y-m-d')) %}
+            <option value="{{ day }}">
+              {{ name }}, <span>{{ day }}</span>
+            </option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="tables" id="tables">
+      <table class="table table-bordered" id="myTable">
+        <thead>
+          <tr>
+            <th scope="col">WEEK</th>
+            <th scope="col">Slot 1</th>
+            <th scope="col">Slot 2</th>
+            <th scope="col">Slot 3</th>
+            <th scope="col">Slot 4</th>
+            <th scope="col">Slot 5</th>
+            <th scope="col">Slot 6</th>
+            <th scope="col">Slot 7</th>
+            <th scope="col">Slot 8</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for name, slots in schedule %}
+            <tr>
+              <th scope="row">{{ name }}</th>
+              {% for i in 1..8 %}
+                {% if slots[i] is defined %}
+                  {% if slots[i]['class'] is empty and slots[i]['status'] == 0 %}
+                    <td>
+                      <span>{{ slots[i]['MSSV'] }}</span>
+                      <span>{{ slots[i]['fullname'] }}</span>
+                      <span>Processing</span>
+                    </td>
+                  {% elseif slots[i]['class'] is empty and slots[i]['status'] == 1 %}
+                    <td>
+                      <span>{{ slots[i]['MSSV'] }}</span>
+                      <span>{{ slots[i]['fullname'] }}</span>
+                      <span style="color: #03C988">Using</span>
+                    </td>
+                  {% elseif slots[i]['class'] is not empty and slots[i]['status'] is empty %}
+                    <td>
+                      <span>{{ slots[i]['class'] }}</span>
+                    </td>
+                  {% endif %}
+                {% else %}
+                  <td>
+                    {% if app.user %}
+                      <button type="button" class="button" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="getBookingId('{{ name }}', {{ i }})" id="{{ i }}{{ name }}">Available</button>
+                    {% else %}
+                      <button type="button" class="button" onclick="checkLogin()">Available</button>
+                    {% endif %}
+                  </td>
+                {% endif %}
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <!-- Popup Booking -->
+    {% if app.user %}
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">BOOKING INFORMATION</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-2">
+                  <label for="recipient-name" class="col-form-label">Student Name:</label>
+                  <input type="text" class="form-control" id="studentName" value="{{ app.user.fullname }}" readonly />
+                </div>
+                <div class="mb-2">
+                  <label for="recipient-name" class="col-form-label">Student Id:</label>
+                  <input type="text" class="form-control" id="studentId" value="{{ app.user.mssvcb }}" readonly />
+                </div>
+                <div class="display_inline">
+                  <div class="mb-2 col-md-6">
+                    <label for="recipient-name" class="col-form-label">Room:</label>
+                    <input type="text" class="form-control" id="room" value="" readonly />
+                  </div>
+                  <div class="mb-2 col-md-6">
+                    <label for="recipient-name" class="col-form-label">Slot:</label>
+                    <input type="text" class="form-control" id="slot" value="" readonly />
+                  </div>
+                </div>
+                <input type="hidden" class="form-control" id="day" value="" readonly />
+                <div class="mb-2">
+                  <label for="message-text" class="col-form-label">Reason:</label>
+                  <textarea class="form-control" id="txtReason" required></textarea>
+                </div>
+              </form>
+              <h6 class="note">Note(*): Please check your email regularly to stay up-to-date with your booking request.</h6>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="button" id="button" onclick="checkSubmit()" data-bs-dismiss="modal">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+    <!-- Popup Booking -->
+  </body>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+  <script src="{{ asset('js/mainpage.js') }}"></script>
+{% endblock %}

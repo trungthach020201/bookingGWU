@@ -1,0 +1,139 @@
+:root {
+    --Orange_yellow: #FFC93C;
+    --blue_light: #03e9f4;
+    --blue_heavy: #2C74B3;
+    --blue_neon: #5e98a2;
+    --white: #ffffff;
+    --black: #000000;
+    --green_heavy_gradient: #227c7064;
+    --green_light: #439a97d0;
+    --Orange: #FF7000;
+    --navy: #003399a9;
+    --navy2: #003399;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url(../img/VNT_University-of-Greenwich-2-1024x511.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 40%;
+}
+
+.login-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: #ffffff4e;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px var(--black);
+    border-radius: 10px;
+}
+
+.login-box h2 {
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: bold;
+    font-size: 34px;
+    margin: 0 0 30px;
+    padding: 0;
+    color: #000000;
+    text-align: center;
+}
+
+.login-box .user-box {
+    position: relative;
+}
+
+.login-box .user-box input {
+    width: 100%;
+    padding: 10px 0 8px 5px;
+    font-size: 16px;
+    color: var(--black);
+    margin-bottom: 30px;
+    border: none;
+    background-color: var(--white) !important;
+    border-radius: 8px;
+    outline: none;
+    background: transparent;
+}
+
+.login-box .user-box label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-left: 10px;
+    padding: 10px 0;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--black);
+    pointer-events: none;
+    transition: .5s;
+    font-weight: 600;
+}
+
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
+    top: -30px;
+    left: 0;
+    color: var(--black);
+    font-size: 15px;
+}
+
+.login-box form button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 100px;
+    background-color: var(--navy2);
+    border: var(--navy2);
+    color: var(--white);
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 3px;
+    border-radius: 7px;
+}
+
+form button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.login-box button:hover {
+    background: var(#003399a9);
+    color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 0 25px #00339965,
+}
+
+.login-box button {
+    position: absolute;
+    display: block;
+}
+
+@media only screen and (max-width: 768px) {
+    .login-box {
+        /* float: none; */
+        width: 100%;
+    }
+}

@@ -1,0 +1,329 @@
+:root {
+    --Orange_yellow: #ffc93c;
+    --blue_light: #03e9f4;
+    --blue_heavy: #2c74b3;
+    --blue_neon: #5e98a2;
+    --white: #ffffff;
+    --black: #000000;
+    --green_heavy_gradient: #227c7064;
+    --green_light: #439a97d0;
+    --Orange: #ff7000;
+    --navy: #003399a9;
+    --green-light: #54b435;
+    --navy2: #003399;
+}
+
+* {
+    font-family: "Quicksand", sans-serif !important;
+}
+
+label,
+.modal-title {
+    font-weight: 600;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.button_nav {
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: #003399;
+}
+
+.head_logo {
+    position: relative;
+    justify-content: center;
+    text-align: center;
+}
+
+.head_logo img {
+    width: 300px;
+}
+
+.navbar {
+    justify-content: end;
+}
+
+.tables {
+    border: 1px solid;
+    margin: 30px;
+    border-radius: 8px;
+}
+
+tr,
+th {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+.display_inline {
+    display: flex;
+}
+
+.col-md-6 {
+    padding-right: 15px;
+}
+
+.note {
+    font-style: italic;
+    font-weight: 600;
+}
+
+
+/* Booking button */
+
+.button {
+    font-family: inherit;
+    display: inline-block;
+    width: 5em;
+    height: 2.2em;
+    line-height: 2em;
+    overflow: hidden;
+    /* margin: 5px; */
+    font-size: 17px;
+    z-index: 1;
+    color: var(--white);
+    border: 2px solid var(--green-light);
+    border-radius: 6px;
+    position: relative;
+    background: var(--green-light);
+}
+
+
+/* Booking button */
+
+span {
+    display: block;
+}
+
+td span {
+    font-weight: 600;
+}
+
+span:nth-child(3) {
+    color: red;
+}
+
+.border-2 {
+    border: 1px solid #003399;
+    margin: 10px;
+    padding: 2px;
+    background-color: #003399;
+    border-radius: 3px;
+}
+
+.text-center {
+    font-weight: 600;
+}
+
+.tables {
+    overflow-x: auto;
+}
+
+.text-center {
+    background-color: #003399;
+}
+
+h6 span {
+    display: inline-flex;
+    font-weight: 700;
+}
+
+h5.modal-title {
+    color: #003399;
+    text-align: center;
+    justify-content: center;
+}
+
+button .button {
+    overflow: none;
+}
+
+h6 {
+    padding-bottom: 5px;
+}
+
+.card-body {
+    display: flex;
+}
+
+.card {
+    margin: 40px 10% 30px 10%;
+}
+
+.card_button {
+    margin: auto;
+}
+
+.card-title {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.dropdown {
+    margin-left: 40px;
+}
+
+.selection {
+    margin-left: 50px;
+    width: 250px;
+}
+
+select {
+    background-color: #003399 !important;
+    color: #ffffff !important;
+}
+
+select option {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* Pagination */
+
+input[type="button"] {
+    transition: all 0.3s;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input[type="button"]:not(.active) {
+    background-color: transparent;
+}
+
+.active {
+    background-color: #003399;
+    color: #fff;
+}
+
+input[type="button"]:hover:not(.active) {
+    background-color: #ddd;
+}
+
+#buttons {
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.footer {
+    margin-top: 40px;
+}
+
+button.button.btn {
+    text-decoration: none;
+}
+
+.enter {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Loading */
+
+.loader {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border-radius: 50%;
+    -webkit-animation: dot-pulse2 1.5s ease-in-out infinite;
+    animation: dot-pulse2 1.5s ease-in-out infinite;
+}
+
+.dot-1 {
+    background-color: #4285f4;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+}
+
+.dot-2 {
+    background-color: #34a853;
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.dot-3 {
+    background-color: #fbbc05;
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.dot-4 {
+    background-color: #ea4335;
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
+.dot-5 {
+    background-color: #4285f4;
+    -webkit-animation-delay: 1.2s;
+    animation-delay: 1.2s;
+}
+
+@keyframes dot-pulse2 {
+    0% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+    50% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        opacity: 0.5;
+    }
+}
+
+
+/* Change password form */
+
+.borders_change {
+    border: 3px solid var(--navy2);
+    margin: 55px;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.btn_change {
+    margin-top: 20px;
+    background-color: var(--navy2) !important;
+    border: var(--navy2);
+    position: relative;
+    justify-content: center;
+}
+
+.input {
+    padding-top: 20px;
+}
+
+
+/* Change password form */
